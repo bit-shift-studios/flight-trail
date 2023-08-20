@@ -1,4 +1,4 @@
-package bitshift.studios.flighttrail.ui.theme
+package bitshift.studios.flighttrail.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

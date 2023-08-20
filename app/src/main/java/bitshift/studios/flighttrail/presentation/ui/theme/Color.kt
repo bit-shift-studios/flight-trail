@@ -1,4 +1,4 @@
-package bitshift.studios.flighttrail.ui.theme
+package bitshift.studios.flighttrail.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

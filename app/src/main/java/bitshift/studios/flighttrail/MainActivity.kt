@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import bitshift.studios.flighttrail.ui.theme.FlightTrailTheme
+import bitshift.studios.flighttrail.presentation.ui.theme.FlightTrailTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
