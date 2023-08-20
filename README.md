@@ -1,6 +1,7 @@
 <img src="https://github.com/bit-shift-studios/flight-trail/assets/70282966/319a7989-ac2e-49ee-8e1d-35d121c11cda" />
 
 <h1>Flight Trail</h1>
+<img src="https://img.shields.io/github/license/bit-shift-studios/flight-trail?style=for-the-badge&colorA=131820&colorB=FFFFFF&logo=markdown" /> 
 <p>Track and book airport flights effortlessly.</p>
 
 <p>
