@@ -4,7 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -22,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.core.FilledButton
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
-import bitshift.studios.flighttrail.presentation.ui.theme.Main090
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
@@ -89,6 +90,8 @@ fun OnboardingScreen(
 				color = colors.displayLarge
 			)
 		}
+
+		Spacer(modifier = modifier.height(12.dp))
 
 		FilledButton(
 			text = stringResource(id = R.string.get_started),
