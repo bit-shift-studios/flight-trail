@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import bitshift.studios.flighttrail.application.navigation.routes.AppNavRoutes
 import bitshift.studios.flighttrail.presentation.screens.onboarding.composables.OnboardingScreen
 
-val startDestination = AppNavRoutes.onboarding
+const val startDestination = AppNavRoutes.onboarding
 
 @Composable
 fun NavGraph(navController: NavHostController) {
