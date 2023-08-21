@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Flight Trail</string>
+
+    <string name="track_and_book_flights">Track and Book Flights.</string>
+    <string name="effortlessly">Effortlessly</string>
+    <string name="get_started">Get Started</string>
 </resources>
