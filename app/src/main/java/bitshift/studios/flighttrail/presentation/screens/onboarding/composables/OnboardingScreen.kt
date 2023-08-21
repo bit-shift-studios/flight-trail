@@ -35,6 +35,7 @@ data class Colors(
 @Composable
 fun OnboardingScreen(
 	modifier: Modifier = Modifier,
+	onButtonClicked: () -> Unit
 ) {
 	val isDarkTheme = isSystemInDarkTheme()
 	val typography = MaterialTheme.typography
@@ -91,7 +92,7 @@ fun OnboardingScreen(
 
 		FilledButton(
 			text = stringResource(id = R.string.get_started),
-			onButtonClicked = { },
+			onButtonClicked = onButtonClicked,
 			isDarkTheme = isDarkTheme
 		)
 	}
