@@ -49,14 +49,14 @@ val Typography = Typography(
 	displayLarge = TextStyle(
 		fontFamily = AvenirLT,
 		fontWeight = FontWeight.Black,
-		fontSize = 48.sp,
-		lineHeight = 60.sp
+		fontSize = 44.sp,
+		lineHeight = 58.sp
 	),
 	displayMedium = TextStyle(
 		fontFamily = AvenirLT,
 		fontWeight = FontWeight.ExtraBold,
-		fontSize = 32.sp,
-		lineHeight = 50.sp
+		fontSize = 22.sp,
+		lineHeight = 34.sp
 	),
 	displaySmall = TextStyle(
 		fontFamily = AvenirLT,
@@ -79,8 +79,8 @@ val Typography = Typography(
 	titleMedium = TextStyle(
 		fontFamily = Inter,
 		fontWeight = FontWeight.Bold,
-		fontSize = 24.sp,
-		lineHeight = 36.sp
+		fontSize = 18.sp,
+		lineHeight = 30.sp
 	),
 	bodyMedium = TextStyle(
 		fontFamily = Inter,
