@@ -6,16 +6,16 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import bitshift.studios.flighttrail.application.navigation.routes.appNavRoutes
+import bitshift.studios.flighttrail.application.navigation.routes.AppNavRoutes
 import bitshift.studios.flighttrail.presentation.screens.onboarding.composables.OnboardingScreen
 
-val startDestination = appNavRoutes.onboarding
+val startDestination = AppNavRoutes.onboarding
 
 @Composable
 fun NavGraph(navController: NavHostController) {
 	NavHost(navController = navController, startDestination = startDestination) {
 		composable(
-			route = appNavRoutes.onboarding,
+			route = AppNavRoutes.onboarding,
 			enterTransition = {
 				slideIntoContainer(
 					AnimatedContentTransitionScope.SlideDirection.Up,

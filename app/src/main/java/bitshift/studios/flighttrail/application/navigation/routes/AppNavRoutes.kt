@@ -1,7 +1,7 @@
 package bitshift.studios.flighttrail.application.navigation.routes
 
-object appNavRoutes {
-	val onboarding = "onboarding"
-	val home = "home"
-	val flights = "flights"
+object AppNavRoutes {
+	const val onboarding = "onboarding"
+	const val home = "home"
+	const val flights = "flights"
 }

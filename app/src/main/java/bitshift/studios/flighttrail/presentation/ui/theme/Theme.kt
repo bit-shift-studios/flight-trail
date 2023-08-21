@@ -34,8 +34,7 @@ private val lightColorScheme = lightColorScheme(
 @Composable
 fun FlightTrailTheme(
 	darkTheme: Boolean = isSystemInDarkTheme(),
-	// Dynamic color is available on Android 12+
-	dynamicColor: Boolean = true,
+	dynamicColor: Boolean = true,  // Dynamic color is available on Android 12+
 	content: @Composable () -> Unit
 ) {
 	val isAndroid12Plus = dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
