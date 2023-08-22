@@ -60,7 +60,7 @@ fun OnboardingScreen(
 	}
 
 	Column(
-		verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Bottom),
+		verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Bottom),
 		modifier = modifier
 			.fillMaxSize()
 			.padding(
@@ -76,7 +76,8 @@ fun OnboardingScreen(
 		)
 		
 		Column(
-			verticalArrangement = Arrangement.spacedBy(8.dp)
+			verticalArrangement = Arrangement.spacedBy(4.dp),
+			modifier = Modifier.padding(bottom = 4.dp)
 		) {
 			Text(
 				text = stringResource(id = R.string.track_and_book_flights),
@@ -90,8 +91,6 @@ fun OnboardingScreen(
 				color = colors.displayLarge
 			)
 		}
-
-		Spacer(modifier = modifier.height(2.dp))
 
 		FilledButton(
 			text = stringResource(id = R.string.get_started),
