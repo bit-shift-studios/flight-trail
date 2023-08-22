@@ -91,7 +91,7 @@ fun OnboardingScreen(
 			)
 		}
 
-		Spacer(modifier = modifier.height(12.dp))
+		Spacer(modifier = modifier.height(2.dp))
 
 		FilledButton(
 			text = stringResource(id = R.string.get_started),
