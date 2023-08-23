@@ -1,4 +1,4 @@
-package bitshift.studios.flighttrail.presentation.screens.home.composables.components
+package bitshift.studios.flighttrail.presentation.ui.core
 
 import android.content.Intent
 import android.net.Uri

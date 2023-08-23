@@ -37,6 +37,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
+import bitshift.studios.flighttrail.presentation.ui.core.ExternalLink
+import bitshift.studios.flighttrail.presentation.ui.core.ExternalLinkIconButton
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
