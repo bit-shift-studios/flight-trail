@@ -1,10 +1,8 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables.components
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
@@ -31,7 +30,7 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral800
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
 
-data class Colors(
+private data class SearchBarColors(
 	val container: Color,
 	val text: Color,
 	val highlighted: Color,
@@ -42,15 +41,16 @@ data class Colors(
 @Composable
 fun SearchBar(
 	modifier: Modifier = Modifier,
-	width: Animatable<Float, AnimationVector1D>,
+	width: Dp,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
 	onButtonClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
 	showIconButton: Boolean,
+	showSearchBar: Boolean,
 	isDarkTheme: Boolean
 ) {
-	val colors = Colors(
+	val searchBarColors = SearchBarColors(
 		container = if (isDarkTheme) Neutral800 else Neutral500,
 		text = if (isDarkTheme) Neutral500 else Neutral900,
 		highlighted = if (isDarkTheme) Main080 else Main100,
@@ -60,62 +60,66 @@ fun SearchBar(
 	val typography = MaterialTheme.typography
 
 	Box {
-		if (showIconButton) {
+		if(showIconButton) {
 			IconButton(onClick = onButtonClicked) {
-				AnimatedVisibility(visible = showIconButton) {
-					Icon(
-						painter = painterResource(id = R.drawable.icon_search),
-						contentDescription = null,
-						tint = colors.text,
-						modifier = modifier.size(24.dp)
-					)
-				}
+				Icon(
+					painter = painterResource(id = R.drawable.icon_search),
+					contentDescription = null,
+					tint = searchBarColors.text,
+					modifier = modifier.size(24.dp)
+				)
 			}
 		}
 
-		OutlinedTextField(
-			value = searchValue,
-			onValueChange = onSearchValueChange,
-			singleLine = true,
-			maxLines = 1,
-			leadingIcon = {
-				Icon(
-					painter = painterResource(id = R.drawable.icon_search),
-					contentDescription = "search",
-					tint = colors.highlighted,
-					modifier = Modifier.size(24.dp)
-				)
-			},
-			trailingIcon = {
-				if (searchValue.isEmpty()) {
+		if (showSearchBar) {
+			OutlinedTextField(
+				value = searchValue,
+				onValueChange = onSearchValueChange,
+				singleLine = true,
+				maxLines = 1,
+				leadingIcon = {
 					Icon(
-						painter = painterResource(id = R.drawable.icon_clear),
-						contentDescription = "clear",
-						tint = colors.text.copy(alpha = 0.6f),
-						modifier = Modifier
-							.size(18.dp)
-							.clickable { onCloseClicked() }
+						painter = painterResource(id = R.drawable.icon_search),
+						contentDescription = "search",
+						tint = searchBarColors.highlighted,
+						modifier = Modifier.size(24.dp)
 					)
-				}
-			},
-			placeholder = {
-				Text(
-					text = stringResource(id = R.string.search_flights),
-					style = typography.bodySmall,
-					color = colors.placeholder
-				)
-			},
-			colors = TextFieldDefaults.outlinedTextFieldColors(
-				containerColor = colors.container,
-				unfocusedBorderColor = colors.container,
-				focusedBorderColor = colors.container,
-				textColor = colors.text
-			),
-			shape = RoundedCornerShape(16.dp),
-			modifier = Modifier
-				.width(width.value.dp)
-				.height(52.dp)
-				.padding(start = 16.dp)
-		)
+				},
+				trailingIcon = {
+					if (searchValue.isEmpty()) {
+						Icon(
+							painter = painterResource(id = R.drawable.icon_clear),
+							contentDescription = "clear",
+							tint = searchBarColors.text.copy(alpha = 0.6f),
+							modifier = Modifier
+								.size(18.dp)
+								.clickable { onCloseClicked() }
+						)
+					}
+				},
+				placeholder = {
+					Text(
+						text = stringResource(id = R.string.search_flights),
+						style = typography.bodySmall,
+						color = searchBarColors.placeholder
+					)
+				},
+				colors = TextFieldDefaults.outlinedTextFieldColors(
+					containerColor = searchBarColors.container,
+					unfocusedBorderColor = searchBarColors.container,
+					focusedBorderColor = searchBarColors.container,
+					textColor = searchBarColors.text
+				),
+				shape = RoundedCornerShape(16.dp),
+				modifier = Modifier
+					.width(width)
+					.height(52.dp)
+					.padding(start = 16.dp)
+			)
+		}
+		
+		if (!showSearchBar) {
+			Spacer(modifier = Modifier.height(52.dp))
+		}
 	}
 }

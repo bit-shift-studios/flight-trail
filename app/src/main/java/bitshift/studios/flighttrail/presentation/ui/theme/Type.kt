@@ -98,7 +98,7 @@ val Typography = Typography(
 		fontFamily = Inter,
 		fontWeight = FontWeight.Medium,
 		fontSize = 14.sp,
-		lineHeight = 28.sp
+		lineHeight = 20.sp
 	),
 	labelMedium = TextStyle(
 		fontFamily = AvenirLT,

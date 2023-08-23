@@ -4,9 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -28,7 +26,7 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
 
-data class Colors(
+private data class OnBoardingScreenColors(
 	val displayMedium: Color,
 	val displayLarge: Color
 )
@@ -42,7 +40,7 @@ fun OnboardingScreen(
 	val typography = MaterialTheme.typography
 	val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
 
-	val colors = Colors(
+	val onBoardingScreenColors = OnBoardingScreenColors(
 		displayMedium = if (isDarkTheme) Neutral400 else Neutral900,
 		displayLarge = if (isDarkTheme) Main080 else Main100
 	)
@@ -54,7 +52,7 @@ fun OnboardingScreen(
 			append(text)
 		}
 
-		withStyle(style = SpanStyle(color = colors.displayMedium)) {
+		withStyle(style = SpanStyle(color = onBoardingScreenColors.displayMedium)) {
 			append(".")
 		}
 	}
@@ -82,13 +80,13 @@ fun OnboardingScreen(
 			Text(
 				text = stringResource(id = R.string.track_and_book_flights),
 				style = typography.displayMedium,
-				color = colors.displayMedium
+				color = onBoardingScreenColors.displayMedium
 			)
 
 			Text(
 				text = headlineText,
 				style = typography.displayLarge,
-				color = colors.displayLarge
+				color = onBoardingScreenColors.displayLarge
 			)
 		}
 

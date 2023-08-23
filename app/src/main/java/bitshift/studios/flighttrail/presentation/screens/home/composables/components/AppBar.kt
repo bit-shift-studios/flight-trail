@@ -1,7 +1,5 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables.components
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
@@ -20,13 +19,14 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
 @Composable
 fun AppBar(
 	modifier: Modifier = Modifier,
-	width: Animatable<Float, AnimationVector1D>,
+	width: Dp,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
 	onButtonClicked: () -> Unit,
 	onHelpButtonClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
 	showIconButton: Boolean,
+	showSearchBar: Boolean,
 	isDarkTheme: Boolean
 ) {
 	Row(
@@ -41,6 +41,7 @@ fun AppBar(
 			onButtonClicked = onButtonClicked,
 			onCloseClicked = onCloseClicked,
 			showIconButton = showIconButton,
+			showSearchBar = showSearchBar,
 			isDarkTheme = isDarkTheme
 		)
 

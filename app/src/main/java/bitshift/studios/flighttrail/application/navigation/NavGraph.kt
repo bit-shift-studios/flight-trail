@@ -36,13 +36,13 @@ fun NavGraph(navController: NavHostController) {
 			enterTransition = {
 				slideIntoContainer(
 					AnimatedContentTransitionScope.SlideDirection.Up,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			},
 			exitTransition = {
 				slideOutOfContainer(
 					AnimatedContentTransitionScope.SlideDirection.Down,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			}
 		) {
@@ -59,13 +59,13 @@ fun NavGraph(navController: NavHostController) {
 			enterTransition = {
 				slideIntoContainer(
 					AnimatedContentTransitionScope.SlideDirection.Left,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			},
 			exitTransition = {
 				slideOutOfContainer(
 					AnimatedContentTransitionScope.SlideDirection.Right,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			}
 		) {
