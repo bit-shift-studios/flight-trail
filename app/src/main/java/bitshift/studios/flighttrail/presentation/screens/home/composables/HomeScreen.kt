@@ -79,6 +79,7 @@ fun HomeScreen(
 				onHelpButtonClicked = { viewModel.updateInfoModalVisibility(true) },
 				onCloseClicked = {
 					if (!showInfoModal) {
+						viewModel.clearSearch()
 						viewModel.updateIconButtonVisibility(true)
 					}
 				},

@@ -42,4 +42,12 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 			)
 		}
 	}
+
+	fun clearSearch() {
+		_homeUIState.update { state ->
+			state.copy(
+				search = ""
+			)
+		}
+	}
 }
