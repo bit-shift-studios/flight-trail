@@ -9,13 +9,13 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -146,15 +146,16 @@ fun InfoModal(
 ) {
 	val typography = MaterialTheme.typography
 
-	Box(
+	LazyColumn(
 		modifier = modifier
+			.padding(vertical = 16.dp)
 			.background(
 				color = background,
-				shape = RoundedCornerShape(24.dp)
+				shape = RoundedCornerShape(32.dp)
 			)
 			.border(
 				width = 2.dp,
-				shape = RoundedCornerShape(24.dp),
+				shape = RoundedCornerShape(32.dp),
 				color = border
 			)
 			.widthIn(
@@ -162,74 +163,76 @@ fun InfoModal(
 				max = 320.dp
 			)
 	) {
-		Column(
-			verticalArrangement = Arrangement.spacedBy(24.dp),
-			modifier = Modifier.padding(16.dp)
-		) {
-			val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
-			val textString = buildAnnotatedString {
-				withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-					append("FLIGHT")
-				}
-
-				withStyle(SpanStyle(fontWeight = FontWeight.Normal)) {
-					append(" Trail")
-				}
-			}
-
-			Row(
-				horizontalArrangement = Arrangement.spacedBy(16.dp)
+		item {
+			Column(
+				verticalArrangement = Arrangement.spacedBy(24.dp),
+				modifier = Modifier.padding(16.dp)
 			) {
-				Image(
-					painter = painterResource(id = appIconResID),
-					contentDescription = null,
-					modifier = Modifier.size(48.dp)
-				)
-				
-				Column(
-					verticalArrangement = Arrangement.spacedBy(2.dp)
+				val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
+				val textString = buildAnnotatedString {
+					withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
+						append("FLIGHT")
+					}
+
+					withStyle(SpanStyle(fontWeight = FontWeight.Normal)) {
+						append(" Trail")
+					}
+				}
+
+				Row(
+					horizontalArrangement = Arrangement.spacedBy(16.dp)
 				) {
+					Image(
+						painter = painterResource(id = appIconResID),
+						contentDescription = null,
+						modifier = Modifier.size(48.dp)
+					)
+
+					Column(
+						verticalArrangement = Arrangement.spacedBy(2.dp)
+					) {
+						Text(
+							text = textString,
+							style = typography.displayMedium,
+							color = text
+						)
+
+						Text(
+							text = stringResource(id = R.string.app_version),
+							style = typography.displaySmall,
+							color = highlight
+						)
+					}
+				}
+
+				Row {
 					Text(
-						text = textString,
-						style = typography.displayMedium,
+						text = stringResource(id = R.string.app_info),
+						style = typography.bodySmall,
 						color = text
 					)
-
-					Text(
-						text = stringResource(id = R.string.app_version),
-						style = typography.displaySmall,
-						color = highlight
-					)
 				}
-			}
 
-			Row {
-				Text(
-					text = stringResource(id = R.string.app_info),
-					style = typography.bodySmall,
-					color = text
+				Column(
+					verticalArrangement = Arrangement.spacedBy(16.dp)
+				) {
+					links.forEach { item ->
+						ExternalLink(
+							isDarkTheme = isDarkTheme,
+							hyperlink = item.hyperlink,
+							iconID = item.icon,
+							text = item.text
+						)
+					}
+				}
+
+				ExternalLinkIconButton(
+					isDarkTheme = isDarkTheme,
+					hyperlink = "https://twitter.com/xero_dev",
+					iconID = R.drawable.icon_brand_twitter,
+					text = "Follow the Developer"
 				)
 			}
-
-			Column(
-				verticalArrangement = Arrangement.spacedBy(16.dp)
-			) {
-				links.forEach { item ->
-					ExternalLink(
-						isDarkTheme = isDarkTheme,
-						hyperlink = item.hyperlink,
-						iconID = item.icon,
-						text = item.text
-					)
-				}
-			}
-
-			ExternalLinkIconButton(
-				isDarkTheme = isDarkTheme,
-				hyperlink = "https://twitter.com/xero_dev",
-				iconID = R.drawable.icon_brand_twitter,
-				text = "Follow the Developer"
-			)
 		}
 	}
 }
