@@ -29,8 +29,8 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 private data class ExternalLinkColors(
 	val icon: Color,
@@ -67,8 +67,8 @@ fun ExternalLink(
 
 		false -> ExternalLinkColors(
 			icon = Main100,
-			text = Neutral400,
-			link = Neutral400
+			text = Neutral500,
+			link = Neutral500
 		)
 	}
 
@@ -125,14 +125,14 @@ fun ExternalLinkIconButton(
 	val colors = when(isDarkTheme) {
 		true -> ExternalLinkButtonColors(
 			icon = Main100,
-			text = Neutral600,
+			text = Neutral700,
 			base = Neutral100
 		)
 
 		false -> ExternalLinkButtonColors(
 			icon = Main080,
 			text = Neutral100,
-			base = Neutral600
+			base = Neutral700
 		)
 	}
 

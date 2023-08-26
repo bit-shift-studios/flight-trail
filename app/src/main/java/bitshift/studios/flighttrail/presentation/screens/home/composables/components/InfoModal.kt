@@ -44,9 +44,9 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 private data class ModalColors(
 	val background: Color,
@@ -95,7 +95,7 @@ fun HelpModal(
 	val colors = when (isDarkTheme) {
 		true -> ModalColors(
 			background = Color(0xFF12141A),
-			border = Neutral500,
+			border = Neutral600,
 			text = Neutral200,
 			highlight = Main080
 		)
@@ -103,7 +103,7 @@ fun HelpModal(
 		false ->	ModalColors(
 			background = Neutral100,
 			border = Neutral200,
-			text = Neutral300,
+			text = Neutral400,
 			highlight = Main100
 		)
 	}
@@ -117,7 +117,7 @@ fun HelpModal(
 		verticalArrangement = Arrangement.Center,
 		modifier = modifier
 			.fillMaxSize()
-			.background(Neutral600.copy(alpha = 0.8f))
+			.background(Neutral700.copy(alpha = 0.8f))
 			.clickable { onOverlayClicked() }
 	) {
 		InfoModal(

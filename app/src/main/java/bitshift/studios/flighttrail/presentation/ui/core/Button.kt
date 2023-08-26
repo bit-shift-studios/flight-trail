@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 private data class ButtonColors (
 	val base: Color,
@@ -31,11 +31,11 @@ fun FilledButton(
 	val buttonColors = when (isDarkTheme) {
 		true -> ButtonColors(
 			base = Neutral100,
-			text = Neutral600
+			text = Neutral700
 		)
 
 		false -> ButtonColors(
-			base = Neutral600,
+			base = Neutral700,
 			text = Neutral100
 		)
 	}

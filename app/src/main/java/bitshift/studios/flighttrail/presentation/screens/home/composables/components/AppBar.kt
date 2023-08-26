@@ -10,23 +10,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 @Composable
 fun AppBar(
 	modifier: Modifier = Modifier,
-	width: Dp,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
-	onButtonClicked: () -> Unit,
 	onHelpButtonClicked: () -> Unit,
+	onDoneClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
-	showIconButton: Boolean,
-	showSearchBar: Boolean,
 	isDarkTheme: Boolean
 ) {
 	Row(
@@ -35,13 +31,10 @@ fun AppBar(
 		modifier = modifier.fillMaxWidth()
 	) {
 		SearchBar(
-			width = width,
 			searchValue = searchValue,
 			onSearchValueChange = onSearchValueChange,
-			onButtonClicked = onButtonClicked,
+			onDoneClicked = onDoneClicked,
 			onCloseClicked = onCloseClicked,
-			showIconButton = showIconButton,
-			showSearchBar = showSearchBar,
 			isDarkTheme = isDarkTheme
 		)
 
@@ -49,8 +42,8 @@ fun AppBar(
 			Icon(
 				painter = painterResource(id = R.drawable.icon_help),
 				contentDescription = "help",
-				tint = if (isDarkTheme) Neutral100 else Neutral600,
-				modifier = modifier.size(30.dp)
+				tint = if (isDarkTheme) Neutral100 else Neutral700,
+				modifier = modifier.size(32.dp)
 			)
 		}
 	}

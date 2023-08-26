@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 data class HomeUIState(
 	var search: String = "",
-	var showIconButton: Boolean = true,
 	var showInfoModal: Boolean = false
 )
 
@@ -18,14 +17,6 @@ data class HomeUIState(
 class HomeViewModel @Inject constructor() : ViewModel() {
 	private val _homeUIState = MutableStateFlow(HomeUIState())
 	val homeUIState: StateFlow<HomeUIState> = _homeUIState.asStateFlow()
-
-	fun updateIconButtonVisibility(visibility: Boolean) {
-		_homeUIState.update { state ->
-			state.copy(
-				showIconButton = visibility
-			)
-		}
-	}
 
 	fun updateInfoModalVisibility(visibility: Boolean) {
 		_homeUIState.update { state ->

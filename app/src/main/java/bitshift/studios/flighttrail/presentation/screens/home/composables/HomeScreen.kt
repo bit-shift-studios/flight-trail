@@ -1,7 +1,6 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -12,17 +11,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.zIndex
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.AppBar
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.HelpModal
 import bitshift.studios.flighttrail.presentation.screens.home.composables.display.AirportMatchesDisplay
 import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 private data class HomeScreenColors(
 	val container: Color
@@ -35,18 +33,12 @@ fun HomeScreen(
 ) {
 	val isDarkTheme = isSystemInDarkTheme()
 	val uiState = viewModel.homeUIState.collectAsState().value
-	val showIconButton = uiState.showIconButton
+	val focusManager = LocalFocusManager.current
 	val showInfoModal = uiState.showInfoModal
-
-	val width by animateDpAsState(
-		targetValue = if (showIconButton) 64.dp else 280.dp,
-		animationSpec = tween(200),
-		label = "width anim"
-	)
 
 	val homeScreenColors = when (isDarkTheme) {
 		true -> HomeScreenColors(
-			container = Neutral600
+			container = Neutral700
 		)
 
 		false -> HomeScreenColors(
@@ -66,25 +58,20 @@ fun HomeScreen(
 		containerColor = homeScreenColors.container,
 		topBar = {
 			AppBar(
-				width = width,
 				searchValue = uiState.search,
 				onSearchValueChange = {
 					viewModel.updateSearch(it)
 				},
-				onButtonClicked = {
-					if (!showInfoModal) {
-						viewModel.updateIconButtonVisibility(false)
-					}
-				},
 				onHelpButtonClicked = { viewModel.updateInfoModalVisibility(true) },
+				onDoneClicked = {
+					focusManager.clearFocus()
+				},
 				onCloseClicked = {
 					if (!showInfoModal) {
 						viewModel.clearSearch()
-						viewModel.updateIconButtonVisibility(true)
+						focusManager.clearFocus()
 					}
 				},
-				showIconButton = showIconButton,
-				showSearchBar = !showIconButton,
 				isDarkTheme = isDarkTheme
 			)
 		}

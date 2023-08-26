@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
 private data class AirportMatchesDisplayColors(
 	val text: Color,
@@ -41,8 +41,8 @@ fun AirportMatchesDisplay(
 		)
 
 		false -> AirportMatchesDisplayColors(
-			text = Neutral400,
-			secondaryText = Neutral600.copy(alpha = 0.8f)
+			text = Neutral500,
+			secondaryText = Neutral700.copy(alpha = 0.8f)
 		)
 	}
 
