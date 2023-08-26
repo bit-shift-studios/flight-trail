@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 data class HomeUIState(
 	var search: String = "",
-	var showIconButton: Boolean = false,
+	var showIconButton: Boolean = true,
 	var showInfoModal: Boolean = false
 )
 

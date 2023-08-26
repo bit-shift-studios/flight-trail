@@ -13,7 +13,7 @@
         android:strokeLineJoin="round"
         android:strokeWidth="3"
         android:fillColor="#00000000"
-        android:strokeColor="#F7F9FB"
+        android:strokeColor="#090A0D"
         android:fillAlpha="0.4"
         android:strokeLineCap="round"/>
     <path
@@ -22,7 +22,7 @@
         android:strokeWidth="3"
         android:fillColor="#00000000"
         android:fillType="evenOdd"
-        android:strokeColor="#F7F9FB"
+        android:strokeColor="#090A0D"
         android:strokeLineCap="round"/>
   </group>
 </vector>
