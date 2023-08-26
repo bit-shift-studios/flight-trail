@@ -20,7 +20,7 @@ fun AppBar(
 	modifier: Modifier = Modifier,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
-	onHelpButtonClicked: () -> Unit,
+	onInfoClicked: () -> Unit,
 	onDoneClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
 	isDarkTheme: Boolean
@@ -38,7 +38,7 @@ fun AppBar(
 			isDarkTheme = isDarkTheme
 		)
 
-		IconButton(onClick = onHelpButtonClicked) {
+		IconButton(onClick = onInfoClicked) {
 			Icon(
 				painter = painterResource(id = R.drawable.icon_help),
 				contentDescription = "help",

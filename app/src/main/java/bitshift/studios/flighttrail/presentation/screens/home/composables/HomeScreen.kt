@@ -62,7 +62,10 @@ fun HomeScreen(
 				onSearchValueChange = {
 					viewModel.updateSearch(it)
 				},
-				onHelpButtonClicked = { viewModel.updateInfoModalVisibility(true) },
+				onInfoClicked = {
+					focusManager.clearFocus()
+					viewModel.updateInfoModalVisibility(true)
+				},
 				onDoneClicked = {
 					focusManager.clearFocus()
 				},
