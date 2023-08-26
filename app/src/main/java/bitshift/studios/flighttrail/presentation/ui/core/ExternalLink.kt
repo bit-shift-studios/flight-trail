@@ -64,7 +64,8 @@ fun ExternalLink(
 			text = Neutral200,
 			link = Neutral200
 		)
-		else -> ExternalLinkColors(
+
+		false -> ExternalLinkColors(
 			icon = Main100,
 			text = Neutral400,
 			link = Neutral400
@@ -127,7 +128,8 @@ fun ExternalLinkIconButton(
 			text = Neutral600,
 			base = Neutral100
 		)
-		else -> ExternalLinkButtonColors(
+
+		false -> ExternalLinkButtonColors(
 			icon = Main080,
 			text = Neutral100,
 			base = Neutral600

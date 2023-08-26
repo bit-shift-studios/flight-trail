@@ -31,7 +31,6 @@ private data class HomeScreenColors(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-	modifier: Modifier = Modifier,
 	viewModel: HomeViewModel
 ) {
 	val isDarkTheme = isSystemInDarkTheme()
@@ -45,9 +44,15 @@ fun HomeScreen(
 		label = "width anim"
 	)
 
-	val homeScreenColors = HomeScreenColors(
-		container = if (isDarkTheme) Neutral600 else Neutral100
-	)
+	val homeScreenColors = when (isDarkTheme) {
+		true -> HomeScreenColors(
+			container = Neutral600
+		)
+
+		false -> HomeScreenColors(
+			container = Neutral100
+		)
+	}
 
 	if (showInfoModal) {
 		HelpModal(

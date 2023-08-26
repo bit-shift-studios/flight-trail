@@ -40,7 +40,7 @@ fun AirportMatchesDisplay(
 			secondaryText = Neutral200.copy(alpha = 0.8f)
 		)
 
-		else -> AirportMatchesDisplayColors(
+		false -> AirportMatchesDisplayColors(
 			text = Neutral400,
 			secondaryText = Neutral600.copy(alpha = 0.8f)
 		)

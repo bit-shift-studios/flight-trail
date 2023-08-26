@@ -99,7 +99,8 @@ fun HelpModal(
 			text = Neutral200,
 			highlight = Main080
 		)
-		else ->	ModalColors(
+
+		false ->	ModalColors(
 			background = Neutral100,
 			border = Neutral200,
 			text = Neutral300,

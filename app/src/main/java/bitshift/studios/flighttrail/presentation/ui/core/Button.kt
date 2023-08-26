@@ -28,10 +28,17 @@ fun FilledButton(
 	isDarkTheme: Boolean
 ) {
 	val typography = MaterialTheme.typography
-	val buttonColors = ButtonColors(
-		base = if (isDarkTheme) Neutral100 else Neutral600,
-		text = if (isDarkTheme) Neutral600 else Neutral100
-	)
+	val buttonColors = when (isDarkTheme) {
+		true -> ButtonColors(
+			base = Neutral100,
+			text = Neutral600
+		)
+
+		false -> ButtonColors(
+			base = Neutral600,
+			text = Neutral100
+		)
+	}
 
 	Button(
 		onClick = onButtonClicked,

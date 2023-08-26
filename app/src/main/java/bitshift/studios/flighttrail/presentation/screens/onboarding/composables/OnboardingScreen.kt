@@ -40,10 +40,17 @@ fun OnboardingScreen(
 	val typography = MaterialTheme.typography
 	val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
 
-	val onBoardingScreenColors = OnBoardingScreenColors(
-		displayMedium = if (isDarkTheme) Neutral100 else Neutral600,
-		displayLarge = if (isDarkTheme) Main080 else Main100
-	)
+	val onBoardingScreenColors = when (isDarkTheme) {
+		true -> OnBoardingScreenColors(
+			displayMedium = Neutral100,
+			displayLarge = Main080
+		)
+
+		false -> OnBoardingScreenColors(
+			displayMedium = Neutral600,
+			displayLarge = Main100
+		)
+	}
 
 	val headlineText = buildAnnotatedString {
 		val text = stringResource(id = R.string.effortlessly)

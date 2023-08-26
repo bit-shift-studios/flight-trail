@@ -50,12 +50,21 @@ fun SearchBar(
 	showSearchBar: Boolean,
 	isDarkTheme: Boolean
 ) {
-	val searchBarColors = SearchBarColors(
-		container = if (isDarkTheme) Neutral500 else Neutral200,
-		text = if (isDarkTheme) Neutral200 else Neutral600,
-		highlighted = if (isDarkTheme) Main080 else Main100,
-		placeholder = if (isDarkTheme) Neutral200 else Neutral400
-	)
+	val colors = when (isDarkTheme) {
+		true -> SearchBarColors(
+			container = Neutral500,
+			text = Neutral200,
+			highlighted = Main080,
+			placeholder = Neutral200
+		)
+
+		false -> SearchBarColors(
+			container = Neutral200,
+			text = Neutral600,
+			highlighted = Main100,
+			placeholder = Neutral400
+		)
+	}
 
 	val typography = MaterialTheme.typography
 
@@ -65,7 +74,7 @@ fun SearchBar(
 				Icon(
 					painter = painterResource(id = R.drawable.icon_search),
 					contentDescription = null,
-					tint = searchBarColors.text,
+					tint = colors.text,
 					modifier = modifier.size(24.dp)
 				)
 			}
@@ -81,7 +90,7 @@ fun SearchBar(
 					Icon(
 						painter = painterResource(id = R.drawable.icon_search),
 						contentDescription = "search",
-						tint = searchBarColors.highlighted,
+						tint = colors.highlighted,
 						modifier = Modifier.size(24.dp)
 					)
 				},
@@ -90,7 +99,7 @@ fun SearchBar(
 						Icon(
 							painter = painterResource(id = R.drawable.icon_clear),
 							contentDescription = "clear",
-							tint = searchBarColors.text.copy(alpha = 0.6f),
+							tint = colors.text.copy(alpha = 0.6f),
 							modifier = Modifier
 								.size(18.dp)
 								.clickable { onCloseClicked() }
@@ -101,15 +110,15 @@ fun SearchBar(
 					Text(
 						text = stringResource(id = R.string.search_flights),
 						style = typography.bodySmall,
-						color = searchBarColors.placeholder
+						color = colors.placeholder
 					)
 				},
 				textStyle = typography.bodySmall,
 				colors = TextFieldDefaults.outlinedTextFieldColors(
-					containerColor = searchBarColors.container,
-					unfocusedBorderColor = searchBarColors.container,
-					focusedBorderColor = searchBarColors.container,
-					textColor = searchBarColors.text
+					containerColor = colors.container,
+					unfocusedBorderColor = colors.container,
+					focusedBorderColor = colors.container,
+					textColor = colors.text
 				),
 				shape = RoundedCornerShape(16.dp),
 				modifier = Modifier
