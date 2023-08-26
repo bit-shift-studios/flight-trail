@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import bitshift.studios.flighttrail.application.navigation.routes.AppNavRoutes
 import bitshift.studios.flighttrail.presentation.screens.home.composables.HomeScreen
+import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
 import bitshift.studios.flighttrail.presentation.screens.onboarding.composables.OnboardingScreen
 import bitshift.studios.flighttrail.presentation.screens.onboarding.viewmodels.OnboardingViewModel
 import kotlinx.coroutines.delay
@@ -73,7 +74,8 @@ fun NavGraph(navController: NavHostController, startDestination: String) {
 				)
 			}
 		) {
-			HomeScreen()
+			val viewModel: HomeViewModel = hiltViewModel()
+			HomeScreen(viewModel = viewModel)
 		}
 	}
 }

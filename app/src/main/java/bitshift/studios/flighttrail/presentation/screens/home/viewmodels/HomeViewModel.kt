@@ -1,5 +1,6 @@
 package bitshift.studios.flighttrail.presentation.screens.home.viewmodels
 
+import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +13,7 @@ data class HomeUIState(
 )
 
 @HiltViewModel
-class HomeViewModel @Inject constructor() {
+class HomeViewModel @Inject constructor() : ViewModel() {
 	private val _homeUIState = MutableStateFlow(HomeUIState())
 	val homeUIState: StateFlow<HomeUIState> = _homeUIState.asStateFlow()
 

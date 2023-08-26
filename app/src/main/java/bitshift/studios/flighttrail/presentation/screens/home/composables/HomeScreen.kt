@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.AppBar
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.HelpModal
+import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
 
@@ -29,11 +31,15 @@ private data class HomeScreenColors(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-	modifier: Modifier = Modifier
+	modifier: Modifier = Modifier,
+	viewModel: HomeViewModel
 ) {
 	val isDarkTheme = isSystemInDarkTheme()
 	var showIconButton by remember { mutableStateOf(true) }
 	var showInfoModal by remember { mutableStateOf(false) }
+
+	val uiState = viewModel.homeUIState.collectAsState().value
+
 	val width by animateDpAsState(
 		targetValue = if (showIconButton) 64.dp else 280.dp,
 		animationSpec = tween(200),
@@ -57,8 +63,10 @@ fun HomeScreen(
 		topBar = {
 			AppBar(
 				width = width,
-				searchValue = "",
-				onSearchValueChange = {},
+				searchValue = uiState.search,
+				onSearchValueChange = {
+					viewModel.updateSearch(it)
+				},
 				onButtonClicked = {
 					if (!showInfoModal) {
 						showIconButton = false

@@ -104,6 +104,7 @@ fun SearchBar(
 						color = searchBarColors.placeholder
 					)
 				},
+				textStyle = typography.bodySmall,
 				colors = TextFieldDefaults.outlinedTextFieldColors(
 					containerColor = searchBarColors.container,
 					unfocusedBorderColor = searchBarColors.container,
