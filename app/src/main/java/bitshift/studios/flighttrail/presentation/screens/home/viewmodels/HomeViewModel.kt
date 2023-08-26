@@ -9,13 +9,31 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 data class HomeUIState(
-	var search: String = ""
+	var search: String = "",
+	var showIconButton: Boolean = false,
+	var showInfoModal: Boolean = false
 )
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
 	private val _homeUIState = MutableStateFlow(HomeUIState())
 	val homeUIState: StateFlow<HomeUIState> = _homeUIState.asStateFlow()
+
+	fun updateIconButtonVisibility(visibility: Boolean) {
+		_homeUIState.update { state ->
+			state.copy(
+				showIconButton = visibility
+			)
+		}
+	}
+
+	fun updateInfoModalVisibility(visibility: Boolean) {
+		_homeUIState.update { state ->
+			state.copy(
+				showInfoModal = visibility
+			)
+		}
+	}
 
 	fun updateSearch(query: String) {
 		_homeUIState.update { state ->

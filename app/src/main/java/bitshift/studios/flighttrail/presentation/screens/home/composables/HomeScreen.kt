@@ -11,9 +11,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -35,10 +32,9 @@ fun HomeScreen(
 	viewModel: HomeViewModel
 ) {
 	val isDarkTheme = isSystemInDarkTheme()
-	var showIconButton by remember { mutableStateOf(true) }
-	var showInfoModal by remember { mutableStateOf(false) }
-
 	val uiState = viewModel.homeUIState.collectAsState().value
+	val showIconButton = uiState.showIconButton
+	val showInfoModal = uiState.showInfoModal
 
 	val width by animateDpAsState(
 		targetValue = if (showIconButton) 64.dp else 280.dp,
@@ -53,7 +49,7 @@ fun HomeScreen(
 	if (showInfoModal) {
 		HelpModal(
 			isDarkTheme = isDarkTheme,
-			onOverlayClicked = { showInfoModal = false },
+			onOverlayClicked = { viewModel.updateInfoModalVisibility(false) },
 			modifier = Modifier.zIndex(9999f)
 		)
 	}
@@ -69,13 +65,13 @@ fun HomeScreen(
 				},
 				onButtonClicked = {
 					if (!showInfoModal) {
-						showIconButton = false
+						viewModel.updateIconButtonVisibility(false)
 					}
 				},
-				onHelpButtonClicked = { showInfoModal = true },
+				onHelpButtonClicked = { viewModel.updateInfoModalVisibility(true) },
 				onCloseClicked = {
 					if (!showInfoModal) {
-						showIconButton = true
+						viewModel.updateIconButtonVisibility(true)
 					}
 				},
 				showIconButton = showIconButton,
