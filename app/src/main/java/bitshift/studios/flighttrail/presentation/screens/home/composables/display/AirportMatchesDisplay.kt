@@ -1,6 +1,5 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables.display
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -56,9 +55,7 @@ fun AirportMatchesDisplay(
 			Row(
 				modifier = Modifier.fillMaxWidth()
 			) {
-				Column(
-					verticalArrangement = Arrangement.spacedBy(2.dp)
-				) {
+				Column {
 					Text(
 						text = stringResource(id = R.string.airport),
 						style = typography.bodySmall,

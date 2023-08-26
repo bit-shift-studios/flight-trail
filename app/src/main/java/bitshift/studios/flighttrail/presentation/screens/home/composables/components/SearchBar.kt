@@ -23,7 +23,6 @@ import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
@@ -57,7 +56,7 @@ fun SearchBar(
 
 		false -> SearchBarColors(
 			container = Neutral200,
-			border = Neutral300,
+			border = Main080,
 			text = Neutral700,
 			highlighted = Main100,
 			placeholder = Neutral500
@@ -84,7 +83,7 @@ fun SearchBar(
 				Icon(
 					painter = painterResource(id = R.drawable.icon_clear),
 					contentDescription = "clear",
-					tint = colors.text.copy(alpha = 0.6f),
+					tint = colors.text.copy(alpha = 0.5f),
 					modifier = Modifier
 						.size(18.dp)
 						.clickable { onCloseClicked() }
@@ -110,7 +109,7 @@ fun SearchBar(
 			onDone = { onDoneClicked() }
 		),
 		modifier = modifier
-			.width(298.dp)
+			.width(280.dp)
 			.height(52.dp)
 			.padding(start = 16.dp)
 	)
