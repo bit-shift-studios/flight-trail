@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -149,6 +150,7 @@ fun InfoModal(
 	LazyColumn(
 		modifier = modifier
 			.padding(vertical = 16.dp)
+			.clip(RoundedCornerShape(32.dp))
 			.background(
 				color = background,
 				shape = RoundedCornerShape(32.dp)
@@ -166,7 +168,7 @@ fun InfoModal(
 		item {
 			Column(
 				verticalArrangement = Arrangement.spacedBy(24.dp),
-				modifier = Modifier.padding(16.dp)
+				modifier = Modifier.padding(20.dp)
 			) {
 				val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
 				val textString = buildAnnotatedString {
