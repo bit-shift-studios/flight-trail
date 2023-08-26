@@ -2,12 +2,12 @@ package bitshift.studios.flighttrail.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Neutral900 = Color(0xFF090A0D)
-val Neutral800 = Color(0xFF16181E)
-val Neutral700 = Color(0xFF292B34)
-val Neutral600 = Color(0xFF292B34)
-val Neutral500 = Color(0xFFE8E9ED)
-val Neutral400 = Color(0xFFF7F9FB)
+val Neutral600 = Color(0xFF090A0D)
+val Neutral500 = Color(0xFF16181E)
+val Neutral400 = Color(0xFF292B34)
+val Neutral300 = Color(0xFF292B34)
+val Neutral200 = Color(0xFFE8E9ED)
+val Neutral100 = Color(0xFFF7F9FB)
 
 val Main100 = Color(0xFF277CFC)
 val Main090 = Color(0xFF619DF7)

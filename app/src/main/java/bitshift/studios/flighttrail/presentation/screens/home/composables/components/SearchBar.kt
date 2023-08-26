@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral800
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
 private data class SearchBarColors(
 	val container: Color,
@@ -51,10 +51,10 @@ fun SearchBar(
 	isDarkTheme: Boolean
 ) {
 	val searchBarColors = SearchBarColors(
-		container = if (isDarkTheme) Neutral800 else Neutral500,
-		text = if (isDarkTheme) Neutral500 else Neutral900,
+		container = if (isDarkTheme) Neutral500 else Neutral200,
+		text = if (isDarkTheme) Neutral200 else Neutral600,
 		highlighted = if (isDarkTheme) Main080 else Main100,
-		placeholder = if (isDarkTheme) Neutral500 else Neutral700
+		placeholder = if (isDarkTheme) Neutral200 else Neutral400
 	)
 
 	val typography = MaterialTheme.typography
@@ -86,7 +86,7 @@ fun SearchBar(
 					)
 				},
 				trailingIcon = {
-					if (searchValue.isEmpty()) {
+					if (searchValue.isNotEmpty()) {
 						Icon(
 							painter = painterResource(id = R.drawable.icon_clear),
 							contentDescription = "clear",

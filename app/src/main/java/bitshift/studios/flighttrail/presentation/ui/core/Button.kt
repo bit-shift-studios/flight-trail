@@ -12,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
-data class Colors (
+private data class ButtonColors (
 	val base: Color,
 	val text: Color
 )
@@ -28,9 +28,9 @@ fun FilledButton(
 	isDarkTheme: Boolean
 ) {
 	val typography = MaterialTheme.typography
-	val colors = Colors(
-		base = if (isDarkTheme) Neutral400 else Neutral900,
-		text = if (isDarkTheme) Neutral900 else Neutral400
+	val buttonColors = ButtonColors(
+		base = if (isDarkTheme) Neutral100 else Neutral600,
+		text = if (isDarkTheme) Neutral600 else Neutral100
 	)
 
 	Button(
@@ -38,8 +38,8 @@ fun FilledButton(
 		contentPadding = PaddingValues(vertical = 16.dp),
 		shape = RoundedCornerShape(16.dp),
 		colors = ButtonDefaults.buttonColors(
-			containerColor = colors.base,
-			contentColor = colors.text
+			containerColor = buttonColors.base,
+			contentColor = buttonColors.text
 		),
 		modifier = modifier
 			.sizeIn(minWidth = 398.dp)
@@ -48,7 +48,7 @@ fun FilledButton(
 		Text(
 			text = text,
 			style = typography.titleMedium,
-			color = colors.text
+			color = buttonColors.text
 		)
 	}
 }

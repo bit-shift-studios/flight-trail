@@ -27,10 +27,10 @@ import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
 private data class ExternalLinkColors(
 	val icon: Color,
@@ -61,13 +61,13 @@ fun ExternalLink(
 	val colors = when (isDarkTheme) {
 		true -> ExternalLinkColors(
 			icon = Main080,
-			text = Neutral500,
-			link = Neutral500
+			text = Neutral200,
+			link = Neutral200
 		)
 		else -> ExternalLinkColors(
 			icon = Main100,
-			text = Neutral700,
-			link = Neutral700
+			text = Neutral400,
+			link = Neutral400
 		)
 	}
 
@@ -124,13 +124,13 @@ fun ExternalLinkIconButton(
 	val colors = when(isDarkTheme) {
 		true -> ExternalLinkButtonColors(
 			icon = Main100,
-			text = Neutral900,
-			base = Neutral400
+			text = Neutral600,
+			base = Neutral100
 		)
 		else -> ExternalLinkButtonColors(
 			icon = Main080,
-			text = Neutral400,
-			base = Neutral900
+			text = Neutral100,
+			base = Neutral600
 		)
 	}
 

@@ -42,11 +42,11 @@ import bitshift.studios.flighttrail.presentation.ui.core.ExternalLink
 import bitshift.studios.flighttrail.presentation.ui.core.ExternalLinkIconButton
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral800
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
 
 private data class ModalColors(
 	val background: Color,
@@ -95,14 +95,14 @@ fun HelpModal(
 	val colors = when (isDarkTheme) {
 		true -> ModalColors(
 			background = Color(0xFF12141A),
-			border = Neutral800,
-			text = Neutral500,
+			border = Neutral500,
+			text = Neutral200,
 			highlight = Main080
 		)
 		else ->	ModalColors(
-			background = Neutral400,
-			border = Neutral500,
-			text = Neutral600,
+			background = Neutral100,
+			border = Neutral200,
+			text = Neutral300,
 			highlight = Main100
 		)
 	}
@@ -116,7 +116,7 @@ fun HelpModal(
 		verticalArrangement = Arrangement.Center,
 		modifier = modifier
 			.fillMaxSize()
-			.background(Neutral900.copy(alpha = 0.8f))
+			.background(Neutral600.copy(alpha = 0.8f))
 			.clickable { onOverlayClicked() }
 	) {
 		InfoModal(

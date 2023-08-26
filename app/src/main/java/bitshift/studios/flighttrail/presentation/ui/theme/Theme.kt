@@ -17,18 +17,18 @@ import androidx.core.view.WindowCompat
 
 private val darkColorScheme = darkColorScheme(
 	primary = Main090,
-	background = Neutral900,
-	onBackground = Neutral500,
-	surface = Neutral800,
-	onSurface = Neutral400
+	background = Neutral600,
+	onBackground = Neutral200,
+	surface = Neutral500,
+	onSurface = Neutral100
 )
 
 private val lightColorScheme = lightColorScheme(
 	primary = Main100,
-	background = Neutral400,
-	onBackground = Neutral800,
-	surface = Neutral500,
-	onSurface = Neutral900
+	background = Neutral100,
+	onBackground = Neutral500,
+	surface = Neutral200,
+	onSurface = Neutral600
 )
 
 @Composable
@@ -38,7 +38,7 @@ fun FlightTrailTheme(
 	content: @Composable () -> Unit
 ) {
 	val isAndroid12Plus = dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-	val statusBarColor = if (darkTheme) Neutral900 else Neutral400
+	val statusBarColor = if (darkTheme) Neutral600 else Neutral100
 
 	val colorScheme = when {
 		 isAndroid12Plus -> {

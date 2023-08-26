@@ -23,8 +23,8 @@ import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.core.FilledButton
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
 private data class OnBoardingScreenColors(
 	val displayMedium: Color,
@@ -41,7 +41,7 @@ fun OnboardingScreen(
 	val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
 
 	val onBoardingScreenColors = OnBoardingScreenColors(
-		displayMedium = if (isDarkTheme) Neutral400 else Neutral900,
+		displayMedium = if (isDarkTheme) Neutral100 else Neutral600,
 		displayLarge = if (isDarkTheme) Main080 else Main100
 	)
 

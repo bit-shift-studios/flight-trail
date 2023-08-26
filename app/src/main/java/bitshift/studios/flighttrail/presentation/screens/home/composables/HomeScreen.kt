@@ -1,11 +1,13 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -17,9 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.AppBar
 import bitshift.studios.flighttrail.presentation.screens.home.composables.components.HelpModal
+import bitshift.studios.flighttrail.presentation.screens.home.composables.display.AirportMatchesDisplay
 import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
 private data class HomeScreenColors(
 	val container: Color
@@ -43,7 +46,7 @@ fun HomeScreen(
 	)
 
 	val homeScreenColors = HomeScreenColors(
-		container = if (isDarkTheme) Neutral900 else Neutral400
+		container = if (isDarkTheme) Neutral600 else Neutral100
 	)
 
 	if (showInfoModal) {
@@ -80,11 +83,28 @@ fun HomeScreen(
 			)
 		}
 	) { padding ->
-		Column(
-			modifier = modifier
-				.fillMaxSize()
-				.padding(padding)
-				.padding(horizontal = 16.dp)
-		) {}
+		AnimatedContent(
+			targetState = uiState.search.isNotEmpty(),
+			label = "airport_matches",
+			transitionSpec = {
+				(fadeIn() +
+					slideInHorizontally(
+						animationSpec = tween(300),
+						initialOffsetX =  { fullWidth -> fullWidth })).togetherWith(
+					fadeOut(
+						animationSpec = tween(
+							300
+						)
+					)
+				)
+			}
+		) { airportMatchesVisible ->
+			if (airportMatchesVisible) {
+				AirportMatchesDisplay(
+					isDarkTheme = isDarkTheme,
+					padding = padding
+				)
+			}
+		}
 	}
 }

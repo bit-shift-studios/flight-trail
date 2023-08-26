@@ -13,8 +13,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
 @Composable
 fun AppBar(
@@ -49,7 +49,7 @@ fun AppBar(
 			Icon(
 				painter = painterResource(id = R.drawable.icon_help),
 				contentDescription = "help",
-				tint = if (isDarkTheme) Neutral400 else Neutral900,
+				tint = if (isDarkTheme) Neutral100 else Neutral600,
 				modifier = modifier.size(30.dp)
 			)
 		}

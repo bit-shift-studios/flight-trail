@@ -11,4 +11,6 @@
     <string name="effortlessly">Effortlessly</string>
     <string name="get_started">Get Started</string>
     <string name="search_flights">Search Flights</string>
+    <string name="airport">Airport</string>
+    <string name="matches">Matches</string>
 </resources>
