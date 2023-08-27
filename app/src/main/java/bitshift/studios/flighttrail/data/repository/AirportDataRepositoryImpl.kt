@@ -4,9 +4,10 @@ import bitshift.studios.flighttrail.data.db.airport.AirportDao
 import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
 import bitshift.studios.flighttrail.domain.repositories.AirportDataRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class AirportDataRepositoryImpl (private val airportDao: AirportDao) : AirportDataRepository {
-	override fun getMatchingAirports(query: String): Flow<List<AirportEntity>> {
+class AirportDataRepositoryImpl @Inject constructor(private val airportDao: AirportDao) : AirportDataRepository {
+	override fun getAirportsByQuery(query: String): Flow<List<AirportEntity>> {
 		return airportDao.getAirportsByQuery(query)
 	}
 }

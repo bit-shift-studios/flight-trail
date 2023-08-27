@@ -4,5 +4,5 @@ import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
 import kotlinx.coroutines.flow.Flow
 
 interface AirportDataRepository {
-	fun getMatchingAirports(query: String): Flow<List<AirportEntity>>
+	fun getAirportsByQuery(query: String): Flow<List<AirportEntity>>
 }
