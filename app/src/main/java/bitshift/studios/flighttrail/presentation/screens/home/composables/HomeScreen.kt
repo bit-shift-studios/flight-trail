@@ -101,6 +101,7 @@ fun HomeScreen(
 				AirportMatchesDisplay(
 					isDarkTheme = isDarkTheme,
 					padding = padding,
+					searchQuery = uiState.search,
 					airportResults = uiState.airportResults
 				)
 			}

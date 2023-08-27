@@ -37,6 +37,7 @@ fun AirportMatchesDisplay(
 	modifier: Modifier = Modifier,
 	isDarkTheme: Boolean,
 	padding: PaddingValues,
+	searchQuery: String,
 	airportResults: List<AirportEntity>
 ) {
 	val typography = MaterialTheme.typography
@@ -84,7 +85,11 @@ fun AirportMatchesDisplay(
 			verticalArrangement = Arrangement.spacedBy(16.dp)
 		) {
 			items(items = airportResults, key = { it.id }) { airports ->
-				AirportListItem(airport = airports, isDarkTheme = isDarkTheme)
+				AirportListItem(
+					airport = airports,
+					searchQuery = searchQuery,
+					isDarkTheme = isDarkTheme
+				)
 			}
 		}
 	}

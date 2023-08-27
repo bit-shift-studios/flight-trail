@@ -1,10 +1,12 @@
 package bitshift.studios.flighttrail.presentation.screens.home.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
 import bitshift.studios.flighttrail.domain.usecases.AppUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,7 +32,8 @@ class HomeViewModel @Inject constructor(
 	private val scope = viewModelScope
 
 	fun getAirportsByQuery(query: String) {
-		scope.launch {
+		scope.launch(context = Dispatchers.IO) {
+			Log.d(TAG, "EXECUTED SEARCH QUERY")
 			appUseCases.getAirportsByQuery(query).collect { airports ->
 				_homeUIState.update { state ->
 					state.copy(
