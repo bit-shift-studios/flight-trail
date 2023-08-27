@@ -61,6 +61,7 @@ fun HomeScreen(
 				searchValue = uiState.search,
 				onSearchValueChange = {
 					viewModel.updateSearch(it)
+					viewModel.getAirportsByQuery(uiState.search)
 				},
 				onInfoClicked = {
 					focusManager.clearFocus()
@@ -68,6 +69,7 @@ fun HomeScreen(
 				},
 				onDoneClicked = {
 					focusManager.clearFocus()
+					viewModel.getAirportsByQuery(uiState.search)
 				},
 				onCloseClicked = {
 					if (!showInfoModal) {
@@ -98,7 +100,8 @@ fun HomeScreen(
 			if (airportMatchesVisible) {
 				AirportMatchesDisplay(
 					isDarkTheme = isDarkTheme,
-					padding = padding
+					padding = padding,
+					airportResults = uiState.airportResults
 				)
 			}
 		}

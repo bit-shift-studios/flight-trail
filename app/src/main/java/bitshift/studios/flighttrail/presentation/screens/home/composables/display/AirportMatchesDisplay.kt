@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import bitshift.studios.flighttrail.R
+import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
+import bitshift.studios.flighttrail.presentation.ui.core.AirportListItem
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
@@ -29,7 +32,8 @@ private data class AirportMatchesDisplayColors(
 fun AirportMatchesDisplay(
 	modifier: Modifier = Modifier,
 	isDarkTheme: Boolean,
-	padding: PaddingValues
+	padding: PaddingValues,
+	airportResults: List<AirportEntity>
 ) {
 	val typography = MaterialTheme.typography
 
@@ -69,6 +73,10 @@ fun AirportMatchesDisplay(
 					)
 				}
 			}
+		}
+
+		items(items = airportResults, key = { it.id }) { airports ->
+			AirportListItem(airport = airports, isDarkTheme = isDarkTheme)
 		}
 	}
 }
