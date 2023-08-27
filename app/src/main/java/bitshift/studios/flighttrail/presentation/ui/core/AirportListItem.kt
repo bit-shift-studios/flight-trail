@@ -2,21 +2,26 @@ package bitshift.studios.flighttrail.presentation.ui.core
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
-import bitshift.studios.flighttrail.presentation.ui.theme.Main080
+import bitshift.studios.flighttrail.presentation.ui.theme.Main070
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
@@ -31,21 +36,21 @@ fun AirportListItem(
 	airport: AirportEntity,
 	isDarkTheme: Boolean
 ) {
-	val textColor = if (isDarkTheme) Neutral400 else Neutral600
+	val textColor = if (isDarkTheme) Neutral300 else Neutral500
 
 	Row(modifier = modifier.fillMaxWidth()) {
 		Row(
 			horizontalArrangement = Arrangement.spacedBy(16.dp),
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(16.dp)
 		) {
 			CodeTag(code = airport.iataCode, isDarkTheme = isDarkTheme)
 			Text(
 				text = airport.name,
 				style = MaterialTheme.typography.bodyMedium,
 				color = textColor,
-				overflow = TextOverflow.Ellipsis
+				overflow = TextOverflow.Ellipsis,
+				maxLines = 1
 			)
 		}
 	}
@@ -59,22 +64,32 @@ private fun CodeTag(
 ) {
 	val colors = when (isDarkTheme) {
 		true -> CodeTagColors(
-			container = Neutral500,
+			container = Neutral600,
 			text = Neutral100
 		)
 
 		false -> CodeTagColors(
-			container = Main080,
+			container = Main070,
 			text = Main100
 		)
 	}
 
-	Text(
-		text = code,
-		style = MaterialTheme.typography.labelMedium,
-		color = colors.text,
+	Box(
 		modifier = modifier
-			.padding(8.dp)
-			.background(color = colors.container)
-	)
+			.background(
+				color = colors.container,
+				shape = RoundedCornerShape(8.dp)
+			)
+			.widthIn(min = 48.dp),
+		contentAlignment = Alignment.Center
+	) {
+		Text(
+			text = code,
+			style = MaterialTheme.typography.labelMedium,
+			color = colors.text,
+			fontSize = 14.sp,
+			modifier = modifier
+				.padding(vertical = 8.dp)
+		)
+	}
 }
