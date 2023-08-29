@@ -23,6 +23,7 @@ import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral200
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
@@ -56,7 +57,7 @@ fun SearchBar(
 
 		false -> SearchBarColors(
 			container = Neutral200,
-			border = Main080,
+			border = Neutral300,
 			text = Neutral700,
 			highlighted = Main100,
 			placeholder = Neutral500
@@ -101,7 +102,7 @@ fun SearchBar(
 		colors = TextFieldDefaults.outlinedTextFieldColors(
 			containerColor = colors.container,
 			unfocusedBorderColor = colors.container,
-			focusedBorderColor = colors.border,
+			focusedBorderColor = colors.container,
 			textColor = colors.text
 		),
 		shape = RoundedCornerShape(16.dp),

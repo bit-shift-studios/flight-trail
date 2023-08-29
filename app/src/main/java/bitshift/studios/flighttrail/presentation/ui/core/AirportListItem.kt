@@ -41,7 +41,7 @@ fun AirportListItem(
 	isDarkTheme: Boolean
 ) {
 	val textColor = if (isDarkTheme) Neutral300 else Neutral500
-	val highlightColor = if (isDarkTheme) Color.White else Color.Black
+	val highlightColor = if (isDarkTheme) Color.White else Color.Black.copy(alpha = 0.9f)
 
 	Row(modifier = modifier.fillMaxWidth()) {
 		Row(
