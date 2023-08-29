@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,7 +25,6 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Main070
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral300
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral500
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral600
 
@@ -41,7 +41,7 @@ fun AirportListItem(
 	isDarkTheme: Boolean
 ) {
 	val textColor = if (isDarkTheme) Neutral300 else Neutral500
-	val highlightColor = if (isDarkTheme) Neutral100 else Neutral400
+	val highlightColor = if (isDarkTheme) Color.White else Color.Black
 
 	Row(modifier = modifier.fillMaxWidth()) {
 		Row(
@@ -61,7 +61,10 @@ fun AirportListItem(
 
 				if (startIndex != -1) {
 					addStyle(
-						style = SpanStyle(color = highlightColor),
+						style = SpanStyle(
+							color = highlightColor,
+							fontWeight = FontWeight.Bold
+						),
 						start = startIndex,
 						end = endIndex
 					)

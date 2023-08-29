@@ -1,6 +1,5 @@
 package bitshift.studios.flighttrail.presentation.screens.home.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import bitshift.studios.flighttrail.data.db.airport.entities.AirportEntity
@@ -33,7 +32,6 @@ class HomeViewModel @Inject constructor(
 
 	fun getAirportsByQuery() {
 		scope.launch(context = Dispatchers.IO) {
-			Log.d(TAG, "EXECUTED SEARCH QUERY")
 			appUseCases.getAirportsByQuery(_homeUIState.value.search).collect { airports ->
 				_homeUIState.update { state ->
 					state.copy(
