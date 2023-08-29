@@ -61,7 +61,7 @@ fun HomeScreen(
 				searchValue = uiState.search,
 				onSearchValueChange = {
 					viewModel.updateSearch(it)
-					viewModel.getAirportsByQuery(uiState.search)
+					viewModel.getAirportsByQuery()
 				},
 				onInfoClicked = {
 					focusManager.clearFocus()
@@ -69,7 +69,7 @@ fun HomeScreen(
 				},
 				onDoneClicked = {
 					focusManager.clearFocus()
-					viewModel.getAirportsByQuery(uiState.search)
+					viewModel.getAirportsByQuery()
 				},
 				onCloseClicked = {
 					if (!showInfoModal) {

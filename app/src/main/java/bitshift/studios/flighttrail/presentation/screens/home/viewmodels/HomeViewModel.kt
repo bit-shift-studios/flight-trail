@@ -31,10 +31,10 @@ class HomeViewModel @Inject constructor(
 
 	private val scope = viewModelScope
 
-	fun getAirportsByQuery(query: String) {
+	fun getAirportsByQuery() {
 		scope.launch(context = Dispatchers.IO) {
 			Log.d(TAG, "EXECUTED SEARCH QUERY")
-			appUseCases.getAirportsByQuery(query).collect { airports ->
+			appUseCases.getAirportsByQuery(_homeUIState.value.search).collect { airports ->
 				_homeUIState.update { state ->
 					state.copy(
 						airportResults = airports
