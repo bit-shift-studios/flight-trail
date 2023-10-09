@@ -61,7 +61,7 @@ dependencies {
 	val composeBOMVersion = "2023.03.00"
 	val jUnitVersion = "4.13.2"
 	val roomVersion = "2.5.2"
-	val hiltVersion = "2.44.2"
+	val hiltVersion = "2.48.1"
 	val navigationVersion = "2.7.0-beta01"
 	val splashVersion = "1.0.1"
 
