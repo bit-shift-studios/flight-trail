@@ -1,6 +1,8 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -11,6 +13,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -21,6 +24,9 @@ import bitshift.studios.flighttrail.presentation.screens.home.composables.displa
 import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
 import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 private data class HomeScreenColors(
 	val container: Color
@@ -35,6 +41,8 @@ fun HomeScreen(
 	val uiState = viewModel.homeUIState.collectAsState().value
 	val focusManager = LocalFocusManager.current
 	val showInfoModal = uiState.showInfoModal
+
+	val width = remember { Animatable(200f) }
 
 	val homeScreenColors = when (isDarkTheme) {
 		true -> HomeScreenColors(
@@ -58,10 +66,16 @@ fun HomeScreen(
 		containerColor = homeScreenColors.container,
 		topBar = {
 			AppBar(
+				width = width.value,
 				searchValue = uiState.search,
 				onSearchValueChange = {
 					viewModel.updateSearch(it)
 					viewModel.getAirportsByQuery()
+				},
+				onSearchBarClicked = {
+					CoroutineScope(Dispatchers.IO).launch {
+						maximizeSearchBar(width)
+					}
 				},
 				onInfoClicked = {
 					focusManager.clearFocus()
@@ -70,11 +84,19 @@ fun HomeScreen(
 				onDoneClicked = {
 					focusManager.clearFocus()
 					viewModel.getAirportsByQuery()
+
+					CoroutineScope(Dispatchers.IO).launch {
+						minimizeSearchBar(width)
+					}
 				},
 				onCloseClicked = {
 					if (!showInfoModal) {
 						viewModel.clearSearch()
 						focusManager.clearFocus()
+
+						CoroutineScope(Dispatchers.IO).launch {
+							minimizeSearchBar(width)
+						}
 					}
 				},
 				isDarkTheme = isDarkTheme
@@ -107,4 +129,18 @@ fun HomeScreen(
 			}
 		}
 	}
+}
+
+private suspend fun maximizeSearchBar(width: Animatable<Float, AnimationVector1D>) {
+	width.animateTo(
+		targetValue = 280f,
+		animationSpec = tween(340)
+	)
+}
+
+private suspend fun minimizeSearchBar(width: Animatable<Float, AnimationVector1D>) {
+	width.animateTo(
+		targetValue = 200f,
+		animationSpec = tween(340)
+	)
 }

@@ -18,8 +18,10 @@ import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 @Composable
 fun AppBar(
 	modifier: Modifier = Modifier,
+	width: Float,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
+	onSearchBarClicked: () -> Unit,
 	onInfoClicked: () -> Unit,
 	onDoneClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
@@ -31,8 +33,10 @@ fun AppBar(
 		modifier = modifier.fillMaxWidth()
 	) {
 		SearchBar(
+			width = width,
 			searchValue = searchValue,
 			onSearchValueChange = onSearchValueChange,
+			onSearchBarClicked = onSearchBarClicked,
 			onDoneClicked = onDoneClicked,
 			onCloseClicked = onCloseClicked,
 			isDarkTheme = isDarkTheme

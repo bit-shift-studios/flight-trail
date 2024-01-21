@@ -1,5 +1,6 @@
 package bitshift.studios.flighttrail.presentation.screens.home.composables.components
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -40,8 +41,10 @@ private data class SearchBarColors(
 @Composable
 fun SearchBar(
 	modifier: Modifier = Modifier,
+	width: Float,
 	searchValue: String,
 	onSearchValueChange: (String) -> Unit,
+	onSearchBarClicked: () -> Unit,
 	onDoneClicked: () -> Unit,
 	onCloseClicked: () -> Unit,
 	isDarkTheme: Boolean
@@ -110,8 +113,12 @@ fun SearchBar(
 			onDone = { onDoneClicked() }
 		),
 		modifier = modifier
-			.width(280.dp)
+			.width(width.dp)
 			.height(52.dp)
 			.padding(start = 16.dp)
+			.clickable {
+				onSearchBarClicked()
+				Log.d("SEARCH", "TAPPED")
+			}
 	)
 }
