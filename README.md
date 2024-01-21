@@ -11,7 +11,7 @@
 <h2>App Details</h2>
 <ol>
   <li>Runs on Android <b>7.0</b> and up</li>
-  <li>Clean & Aesthetic UI</li>
+  <li>Clean and aesthetic UI</li>
   <li>Search flights from airports</li>
   <li>Bookmark flights you're interested in</li>
 </ol>

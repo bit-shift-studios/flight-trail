@@ -58,12 +58,15 @@ dependencies {
 	val composeCoreVersion = "1.10.1"
 	val activityComposeVersion = "1.7.2"
 	val lifecycleRuntimeVersion = "2.6.1"
+	val lifeCycleViewModelComposeVersion = "2.6.1"
 	val composeBOMVersion = "2023.03.00"
 	val jUnitVersion = "4.13.2"
 	val roomVersion = "2.5.2"
 	val hiltVersion = "2.44.2"
 	val navigationVersion = "2.7.0-beta01"
 	val splashVersion = "1.0.1"
+	val hiltNavigationComposeVersion = "1.0.0"
+	val dataStoreVersion = "1.0.0"
 
 	implementation("androidx.core:core-ktx:$composeCoreVersion")
 	implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeVersion")
@@ -80,10 +83,12 @@ dependencies {
 	ksp("androidx.room:room-compiler:$roomVersion")
 
 	// Preferences Datastore
-	implementation("androidx.datastore:datastore-preferences:1.0.0")
+	implementation("androidx.datastore:datastore-preferences:$dataStoreVersion")
 
 	// Hilt
 	implementation("com.google.dagger:hilt-android:$hiltVersion")
+	implementation("androidx.hilt:hilt-navigation-compose:$hiltNavigationComposeVersion")
+	implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifeCycleViewModelComposeVersion")
 	kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
 	// Navigation

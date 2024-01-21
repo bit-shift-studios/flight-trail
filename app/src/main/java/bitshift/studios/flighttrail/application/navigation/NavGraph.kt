@@ -7,18 +7,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import bitshift.studios.flighttrail.application.navigation.routes.AppNavRoutes
 import bitshift.studios.flighttrail.presentation.screens.home.composables.HomeScreen
+import bitshift.studios.flighttrail.presentation.screens.home.viewmodels.HomeViewModel
 import bitshift.studios.flighttrail.presentation.screens.onboarding.composables.OnboardingScreen
+import bitshift.studios.flighttrail.presentation.screens.onboarding.viewmodels.OnboardingViewModel
 import kotlinx.coroutines.delay
 
-const val startDestination = AppNavRoutes.onboarding
-
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController, startDestination: String) {
+
 	NavHost(navController = navController, startDestination = AppNavRoutes.loading) {
 		composable(
 			route = AppNavRoutes.loading
@@ -36,18 +38,21 @@ fun NavGraph(navController: NavHostController) {
 			enterTransition = {
 				slideIntoContainer(
 					AnimatedContentTransitionScope.SlideDirection.Up,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			},
 			exitTransition = {
 				slideOutOfContainer(
 					AnimatedContentTransitionScope.SlideDirection.Down,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			}
 		) {
+			val viewModel: OnboardingViewModel = hiltViewModel()
+
 			OnboardingScreen(
 				onButtonClicked = {
+					viewModel.saveOnBoardingState(true)
 					navController.popBackStack()
 					navController.navigate(AppNavRoutes.home)
 				}
@@ -59,17 +64,18 @@ fun NavGraph(navController: NavHostController) {
 			enterTransition = {
 				slideIntoContainer(
 					AnimatedContentTransitionScope.SlideDirection.Left,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			},
 			exitTransition = {
 				slideOutOfContainer(
 					AnimatedContentTransitionScope.SlideDirection.Right,
-					animationSpec = tween(500)
+					animationSpec = tween(250)
 				)
 			}
 		) {
-			HomeScreen()
+			val viewModel: HomeViewModel = hiltViewModel()
+			HomeScreen(viewModel = viewModel)
 		}
 	}
 }

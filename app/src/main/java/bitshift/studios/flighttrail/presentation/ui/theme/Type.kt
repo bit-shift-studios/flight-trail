@@ -82,17 +82,23 @@ val Typography = Typography(
 		fontSize = 18.sp,
 		lineHeight = 30.sp
 	),
+	bodyLarge = TextStyle(
+		fontFamily = Inter,
+		fontWeight = FontWeight.Medium,
+		fontSize = 24.sp,
+		lineHeight = 36.sp
+	),
 	bodyMedium = TextStyle(
 		fontFamily = Inter,
 		fontWeight = FontWeight.Medium,
 		fontSize = 18.sp,
 		lineHeight = 30.sp
 	),
-	bodyLarge = TextStyle(
+	bodySmall = TextStyle(
 		fontFamily = Inter,
 		fontWeight = FontWeight.Medium,
-		fontSize = 24.sp,
-		lineHeight = 36.sp
+		fontSize = 14.sp,
+		lineHeight = 20.sp
 	),
 	labelMedium = TextStyle(
 		fontFamily = AvenirLT,

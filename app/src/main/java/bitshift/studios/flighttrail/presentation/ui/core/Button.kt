@@ -2,11 +2,9 @@ package bitshift.studios.flighttrail.presentation.ui.core
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
-data class Colors (
+private data class ButtonColors (
 	val base: Color,
 	val text: Color
 )
@@ -30,18 +28,25 @@ fun FilledButton(
 	isDarkTheme: Boolean
 ) {
 	val typography = MaterialTheme.typography
-	val colors = Colors(
-		base = if (isDarkTheme) Neutral400 else Neutral900,
-		text = if (isDarkTheme) Neutral900 else Neutral400
-	)
+	val buttonColors = when (isDarkTheme) {
+		true -> ButtonColors(
+			base = Neutral100,
+			text = Neutral700
+		)
+
+		false -> ButtonColors(
+			base = Neutral700,
+			text = Neutral100
+		)
+	}
 
 	Button(
 		onClick = onButtonClicked,
 		contentPadding = PaddingValues(vertical = 16.dp),
 		shape = RoundedCornerShape(16.dp),
 		colors = ButtonDefaults.buttonColors(
-			containerColor = colors.base,
-			contentColor = colors.text
+			containerColor = buttonColors.base,
+			contentColor = buttonColors.text
 		),
 		modifier = modifier
 			.sizeIn(minWidth = 398.dp)
@@ -50,7 +55,7 @@ fun FilledButton(
 		Text(
 			text = text,
 			style = typography.titleMedium,
-			color = colors.text
+			color = buttonColors.text
 		)
 	}
 }

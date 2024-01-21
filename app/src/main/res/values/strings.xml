@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">Flight Trail</string>
+    <string name="app_version">1.1</string>
+    <string name="app_info">
+        This is a practice app created using exercises from the Google Android Developer
+        website. It showcases the use of Jetpack Compose tools and libraries to build a
+        production-ready application.
+    </string>
 
     <string name="track_and_book_flights">Track and Book Flights.</string>
     <string name="effortlessly">Effortlessly</string>
     <string name="get_started">Get Started</string>
+    <string name="search_flights">Search Flights</string>
+    <string name="airport">Airport</string>
+    <string name="matches">Matches</string>
 </resources>

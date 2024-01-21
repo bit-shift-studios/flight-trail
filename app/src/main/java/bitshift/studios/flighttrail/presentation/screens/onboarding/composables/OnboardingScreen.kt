@@ -4,9 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -25,10 +23,10 @@ import bitshift.studios.flighttrail.R
 import bitshift.studios.flighttrail.presentation.ui.core.FilledButton
 import bitshift.studios.flighttrail.presentation.ui.theme.Main080
 import bitshift.studios.flighttrail.presentation.ui.theme.Main100
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral400
-import bitshift.studios.flighttrail.presentation.ui.theme.Neutral900
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral100
+import bitshift.studios.flighttrail.presentation.ui.theme.Neutral700
 
-data class Colors(
+private data class OnBoardingScreenColors(
 	val displayMedium: Color,
 	val displayLarge: Color
 )
@@ -42,10 +40,17 @@ fun OnboardingScreen(
 	val typography = MaterialTheme.typography
 	val appIconResID = if (isDarkTheme) R.drawable.app_icon_light else R.drawable.app_icon_dark
 
-	val colors = Colors(
-		displayMedium = if (isDarkTheme) Neutral400 else Neutral900,
-		displayLarge = if (isDarkTheme) Main080 else Main100
-	)
+	val onBoardingScreenColors = when (isDarkTheme) {
+		true -> OnBoardingScreenColors(
+			displayMedium = Neutral100,
+			displayLarge = Main080
+		)
+
+		false -> OnBoardingScreenColors(
+			displayMedium = Neutral700,
+			displayLarge = Main100
+		)
+	}
 
 	val headlineText = buildAnnotatedString {
 		val text = stringResource(id = R.string.effortlessly)
@@ -54,13 +59,13 @@ fun OnboardingScreen(
 			append(text)
 		}
 
-		withStyle(style = SpanStyle(color = colors.displayMedium)) {
+		withStyle(style = SpanStyle(color = onBoardingScreenColors.displayMedium)) {
 			append(".")
 		}
 	}
 
 	Column(
-		verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Bottom),
+		verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Bottom),
 		modifier = modifier
 			.fillMaxSize()
 			.padding(
@@ -76,22 +81,21 @@ fun OnboardingScreen(
 		)
 		
 		Column(
-			verticalArrangement = Arrangement.spacedBy(8.dp)
+			verticalArrangement = Arrangement.spacedBy(4.dp),
+			modifier = Modifier.padding(bottom = 4.dp)
 		) {
 			Text(
 				text = stringResource(id = R.string.track_and_book_flights),
 				style = typography.displayMedium,
-				color = colors.displayMedium
+				color = onBoardingScreenColors.displayMedium
 			)
 
 			Text(
 				text = headlineText,
 				style = typography.displayLarge,
-				color = colors.displayLarge
+				color = onBoardingScreenColors.displayLarge
 			)
 		}
-
-		Spacer(modifier = modifier.height(2.dp))
 
 		FilledButton(
 			text = stringResource(id = R.string.get_started),
